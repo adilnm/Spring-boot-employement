@@ -12,4 +12,22 @@ public interface EmployeeService {
 
 	EmployeeDTO forget(String emailId);
 
+	List<EmployeeDTO> search(String employeeName);
+
+	boolean register(EmployeeDTO employeeDto);
+
+	EmployeeDTO show(int employee_id);
+
+	boolean update(int employeeId, String empName, String emailId, String password, int salary);
+
+	void delete(int employee_id);
+
+	List<EmployeeDTO> sortAsc();
+
+	List<EmployeeDTO> sortDesc();
+
+	List<EmployeeDTO> sortEmailAsc();
+
+	List<EmployeeDTO> sortEmailDesc();
+
 }
