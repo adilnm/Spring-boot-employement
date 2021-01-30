@@ -42,11 +42,20 @@ public class EmployeeController {
 		}
 	}
 
+	@GetMapping("/logout")
+	String logout(HttpSession session) {
+
+		if (session.getAttribute("emp") != null) {
+			session.invalidate();
+		}
+		return "login";
+	}
+
 	@GetMapping("/showEmployees")
 	String showAllEmployess(Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		List<EmployeeDTO> employeesList = employeeService.findAllEmployees();
 		model.addAttribute("employeesList", employeesList);
 
@@ -92,9 +101,9 @@ public class EmployeeController {
 
 	@PostMapping("/search")
 	String searchEmployee(@RequestParam String searchKey, Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		System.out.println(searchKey);
 		List<EmployeeDTO> employeeList = employeeService.search(searchKey);
 		model.addAttribute("employeesList", employeeList);
@@ -104,9 +113,9 @@ public class EmployeeController {
 
 	@GetMapping("/edit")
 	String edit(@RequestParam int employee_id, Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		EmployeeDTO employeeDTO = employeeService.show(employee_id);
 		model.addAttribute("employee", employeeDTO);
 		return "edit";
@@ -128,9 +137,9 @@ public class EmployeeController {
 
 	@GetMapping("/delete")
 	String employeeDelete(@RequestParam int employee_id, Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		employeeService.delete(employee_id);
 		return "redirect:/showEmployees";
 
@@ -138,9 +147,9 @@ public class EmployeeController {
 
 	@GetMapping("/nameasc")
 	String nameAsc(Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		List<EmployeeDTO> employeesList = employeeService.sortAsc();
 		model.addAttribute("employeesList", employeesList);
 
@@ -149,9 +158,9 @@ public class EmployeeController {
 
 	@GetMapping("/namedesc")
 	String nameDesc(Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		List<EmployeeDTO> employeesList = employeeService.sortDesc();
 		model.addAttribute("employeesList", employeesList);
 
@@ -160,9 +169,9 @@ public class EmployeeController {
 
 	@GetMapping("/emailasc")
 	String emailAsc(Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		List<EmployeeDTO> employeesList = employeeService.sortEmailAsc();
 		model.addAttribute("employeesList", employeesList);
 
@@ -171,9 +180,9 @@ public class EmployeeController {
 
 	@GetMapping("/emaildesc")
 	String emailDesc(Model model, HttpSession session) {
-//		if (session.getAttribute("emp") == null) {
-//			return "login";
-//		}
+		if (session.getAttribute("emp") == null) {
+			return "login";
+		}
 		List<EmployeeDTO> employeesList = employeeService.sortEmailDesc();
 		model.addAttribute("employeesList", employeesList);
 

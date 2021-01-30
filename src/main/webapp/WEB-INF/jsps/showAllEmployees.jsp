@@ -36,8 +36,8 @@
 						<td>${employee.emailId}</td>
 						<td>${employee.password}</td>
 						<td>${employee.salary}</td>
-						<td><a href="/edit?employee_id=${employee.employeeId}"><button type="button" class="btn btn-primary">Edit</button></a>
-							<a href="/delete?employee_id=${employee.employeeId}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+						<td><a href="/edit?employee_id=${employee.employeeId}"><i class="fa fa-pencil-square-o" aria-hidden="true"style="font-size:24px;color:blue"></i></a>
+							<a href="/delete?employee_id=${employee.employeeId}"><i class="fa fa-trash" aria-hidden="true" style="font-size:24px;color:red"></i></a></td>
 					</tr>
 				</c:forEach>
 

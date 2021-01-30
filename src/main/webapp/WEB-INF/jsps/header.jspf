@@ -15,13 +15,15 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="container">
-		<img alt="" class="rounded" src="img/job.jpg" width="1110" height="300">
+		<img alt="" class="rounded" src="img/job.jpg" width="1110"
+			height="300">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Home</a>
+			<a class="navbar-brand" href="showEmployees">Home</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -29,8 +31,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link"
+					<c:choose>
+						<c:when test="${sessionScope.emp ne null}">
+							<li class="nav-item active"><a class="nav-link"
 						href="showEmployees">Show Employees </a></li>
+						</c:when>
+					</c:choose>
 					<li class="nav-item"><a class="nav-link" href="register">Employee
 							Registration</a></li>
 				</ul>
@@ -39,7 +45,8 @@
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search" name="searchKey">
 				<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-			</form>&nbsp
+			</form>
+			&nbsp
 			<c:choose>
 				<c:when test="${sessionScope.emp ne null}">
 					<span style="color: white; padding: 8px;">${emp.employeeName}</span>
