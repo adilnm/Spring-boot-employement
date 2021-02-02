@@ -25,6 +25,7 @@
 							class="fa fa-arrow-down" aria-hidden="true"></i> </a></th>
 					<th>Password</th>
 					<th>Salary</th>
+					<th>Image</th>
 					<th>Edit</th>
 				</tr>
 			</thead>
@@ -36,6 +37,7 @@
 						<td>${employee.emailId}</td>
 						<td>${employee.password}</td>
 						<td>${employee.salary}</td>
+						<td><img src="data:image/jpeg;base64,${employee.photo}" style="height: 120px;"  class="zoom"/>
 						<td><a href="/edit?employee_id=${employee.employeeId}"><i class="fa fa-pencil-square-o" aria-hidden="true"style="font-size:24px;color:blue"></i></a>
 							<a href="/delete?employee_id=${employee.employeeId}"><i class="fa fa-trash" aria-hidden="true" style="font-size:24px;color:red"></i></a></td>
 					</tr>

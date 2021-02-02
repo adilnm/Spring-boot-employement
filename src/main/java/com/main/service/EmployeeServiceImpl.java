@@ -1,5 +1,6 @@
 package com.main.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -85,6 +86,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public boolean register(EmployeeDTO employeeDto) {
 		EmployeeEntity employeeEntity = new EmployeeEntity();
 		BeanUtils.copyProperties(employeeDto, employeeEntity);
+		try {
+			employeeEntity.setTphoto(employeeDto.getFile().getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		magicDaoRepository.save(employeeEntity);
 		return true;
 	}

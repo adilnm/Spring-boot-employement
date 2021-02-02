@@ -1,8 +1,12 @@
 package com.main.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class EmployeeEntity {
@@ -11,6 +15,26 @@ public class EmployeeEntity {
 	String emailId;
 	String password;
 	int salary;
+	private MultipartFile file;
+	private byte[] tphoto;
+
+	@Transient
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+	@Column(name = "photo", columnDefinition = "longblob")
+	public byte[] getTphoto() {
+		return tphoto;
+	}
+
+	public void setTphoto(byte[] tphoto) {
+		this.tphoto = tphoto;
+	}
 
 	@Id
 	@GeneratedValue

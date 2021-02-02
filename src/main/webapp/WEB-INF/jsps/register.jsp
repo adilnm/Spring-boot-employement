@@ -20,7 +20,7 @@
 	<div class="container">
 		<h1>Welcome to Registration</h1><br><br>
 		
-		<form action="registerEmployee" method="post">
+		<form action="registerEmployee" method="post" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-3">Employee Name</div><div class="col-md-9"><input type="text" name="employeeName"></div>
 			</div>
@@ -35,6 +35,10 @@
 			</br>
 			<div class="row">
 				<div class="col-md-3">Salary</div><div class="col-md-9"><input type="text" name="salary"></div>
+			</div>
+			</br>
+			<div class="row">
+				<div class="col-md-3">Image</div><div class="col-md-9"><input type="file" name="file"></div>
 			</div>
 			</br>
 			<button type="submit" class="btn btn-success">Registration</button>

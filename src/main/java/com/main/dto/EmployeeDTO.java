@@ -1,11 +1,40 @@
 package com.main.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EmployeeDTO {
 	int employeeId;
 	String employeeName;
 	String emailId;
 	String password;
 	int salary;
+	private MultipartFile file;
+	private byte[] tphoto;
+	String photo;
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+	public byte[] getTphoto() {
+		return tphoto;
+	}
+
+	public void setTphoto(byte[] tphoto) {
+		this.tphoto = tphoto;
+	}
 
 	public int getEmployeeId() {
 		return employeeId;

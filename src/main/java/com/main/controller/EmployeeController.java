@@ -1,5 +1,8 @@
 package com.main.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -57,7 +60,25 @@ public class EmployeeController {
 			return "login";
 		}
 		List<EmployeeDTO> employeesList = employeeService.findAllEmployees();
-		model.addAttribute("employeesList", employeesList);
+		List<EmployeeDTO> employeesList2 = new ArrayList<>();
+
+		for (EmployeeDTO employee : employeesList) {
+			byte[] b = employee.getTphoto();
+			byte[] encodeBase64 = Base64.getEncoder().encode(b);
+			try {
+				String base64DataString = new String(encodeBase64, "UTF-8");
+				employee.setPhoto(base64DataString);
+				// photoList.add(base64DataString);
+				employeesList2.add(employee);
+
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		model.addAttribute("employeesList", employeesList2);
 
 		return "showAllEmployees";
 	}
